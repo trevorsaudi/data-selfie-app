@@ -2,51 +2,25 @@
 <html>
 <head>
 	<title></title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css">
 
 </head>
 <body>
-
-	<script>
-
-		if ('geolocation' in navigator){
-			console.log('geolocation available');
-			navigator.geolocation.getCurrentPosition(async position => {
-				const lat = position.coords.latitude;
-				const lon = position.coords.longitude;
-				document.getElementById('latitude').textContent = lat;
-				document.getElementById('longitude').textContent = lon;
-
-				const data = {lat, lon};
-				const options = {
-					method: 'POST',
-					body: JSON.stringify(data),
-					headers: {
-				      'Content-Type': 'application/json'
-				    }
-				};
-
-				const response = await fetch('/api' , options);
-				const json = await response.json();
-				console.log(json);
-
-
-
-
-				});
-		} else {
-			console.log('geolocation not available')
-		}
-
-	</script>
 
 	<h1>Data Selfie App</h1>
 	<p>
 		latitude : <span id="latitude"></span> &deg<br />
 		longitude : <span id="longitude"></span>&deg
-		
-	
-
 	</p>
+	<a href="/logs/index.html"> display</a>
+	<a href="/index.html"> input</a>
+	<input type="text" id="mood"/>
+	<button id="submit">Submit</button>
+	<script src="sketch.js"></script>
+
 </body>
 </html>
 
